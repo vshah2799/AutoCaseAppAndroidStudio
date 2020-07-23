@@ -33,18 +33,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
+        TextView textString = findViewById(R.id.inputText1);
+        String tempText = textString.getText().toString();
+
         if(view.getId() == R.id.button1) {
-
-
+            text = tempText.toUpperCase();
         }
 
         else if(view.getId() == R.id.button2) {
-
+            text = tempText.toLowerCase();
         }
-        else if(view.getId() == R.id.button3) {
 
-            TextView textString = findViewById(R.id.inputText1);
-            String tempText = textString.getText().toString();
+        else if(view.getId() == R.id.button3) {
 
             ArrayList<String> letList = new ArrayList<>();
             for(int i = 0; i<tempText.length();i++){
@@ -58,9 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tempString.append(x);
             }
             text = tempString.toString();
-            
+
         }
         else {
+
 
         }
 
