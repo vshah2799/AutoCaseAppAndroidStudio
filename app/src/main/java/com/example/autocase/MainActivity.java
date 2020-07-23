@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public static String text;
-    public String test = "Hello world";
+    private String text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,34 +23,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button2 = findViewById(R.id.button2);
         Button button3 = findViewById(R.id.button3);
         Button button4 = findViewById(R.id.button4);
-        TextView textString = findViewById(R.id.inputText1);
-        text = textString.getText().toString();
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+
     }
 
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.button1) {
-            openActivity2();
+
+
         }
+
         else if(view.getId() == R.id.button2) {
-            openActivity2();
+
         }
         else if(view.getId() == R.id.button3) {
-            openActivity2();
+
+            TextView textString = findViewById(R.id.inputText1);
+            String tempText = textString.getText().toString();
+
+            ArrayList<String> letList = new ArrayList<>();
+            for(int i = 0; i<tempText.length();i++){
+                letList.add(tempText.substring(i, i+1));
+            }
+            for(int i = 0; i<letList.size(); i = i+2){
+                letList.set(i, letList.get(i).toUpperCase());
+            }
+            StringBuilder tempString = new StringBuilder();
+            for(String x : letList){
+                tempString.append(x);
+            }
+            text = tempString.toString();
+            
         }
         else {
-            openActivity2();
+
         }
+
+        openActivity2();
     }
 
     public void openActivity2(){
         Intent intent = new Intent(this, MainActivity2.class);
-        intent.putExtra("text", test);
+        intent.putExtra("text", text);
         startActivity(intent);
     }
 
