@@ -11,7 +11,6 @@
         android:id="@+id/inputText1"
         android:layout_width="349dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="584dp"
         android:ems="10"
         android:hint="Enter Your Text In This Box"
         android:inputType="textPersonName"
@@ -19,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <Button
         android:id="@+id/button1"
