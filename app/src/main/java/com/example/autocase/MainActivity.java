@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //This extracts the text from textString and puts it in a temporary variable. This String will be manipulated in the if statements
         String tempText = textString.getText().toString();
+        //This variable is for the random casing. It will only be used in the else
         textForRan = textString.getText().toString();
 
         if(view.getId() == R.id.button1) {
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //This starts the new activity
         startActivity(intent);
     }
+
     public void openActivity3(){
         //This creates a new intent so when a button is clicked, the user can go to the next activity, MainActivity3
         Intent intent = new Intent(this, MainActivity3.class);

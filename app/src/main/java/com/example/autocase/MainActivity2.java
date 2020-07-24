@@ -28,12 +28,14 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         which is the text that was passed from MainActivity*/
         text3.setText(intent.getStringExtra("text"));
 
+        //This is for going back to MainActivity
         Button buttonGoBackActivity2 = findViewById(R.id.buttonBackFromActivity2);
         buttonGoBackActivity2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        //This is for going back to MainActivity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

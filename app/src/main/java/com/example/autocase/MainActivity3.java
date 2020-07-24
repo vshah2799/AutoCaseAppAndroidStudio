@@ -29,12 +29,15 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         the intent.getStringExtra() gets the "text" key's data,
         which is the text that was passed from MainActivity*/
         text4.setText(randomCase(intent.getStringExtra("text")));
+
+        //This is for going back to MainActivity
         Button buttonGoBackActivity3 = findViewById(R.id.buttonBackFromActivity3);
         buttonGoBackActivity3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        //This is for going back to MainActivity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
