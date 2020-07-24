@@ -11,13 +11,14 @@
         android:id="@+id/inputText1"
         android:layout_width="349dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="584dp"
         android:ems="10"
         android:hint="Enter Your Text In This Box"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
         app:layout_constraintVertical_bias="0.063" />
 
     <Button
@@ -62,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome To Auto Case"

@@ -23,7 +23,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         Intent intent = getIntent();
 
         //This gets the id for the TextView box
-        TextView text4 = findViewById(R.id.textView10);
+        TextView text4 = findViewById(R.id.textView5);
 
         /*This sets the TextView to the final text and
         the intent.getStringExtra() gets the "text" key's data,
