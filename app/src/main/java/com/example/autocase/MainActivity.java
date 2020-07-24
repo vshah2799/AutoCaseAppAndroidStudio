@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //This variable, "text", is the text that the user inputs into the text box in this activity
     private String text;
-
+    private String textForRan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //This extracts the text from textString and puts it in a temporary variable. This String will be manipulated in the if statements
         String tempText = textString.getText().toString();
+        textForRan = textString.getText().toString();
 
         if(view.getId() == R.id.button1) {
             /*This makes tempText all uppercase and then text gets set to it
@@ -95,8 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         else {
-
-
+            /*This calls the method openActivity3 because the text will be
+            manipulated in the next activity*/
+            openActivity3();
+            //This is so that the openActivity2 is not reached
+            return;
         }
 
         openActivity2();
@@ -107,6 +111,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, MainActivity2.class);
         //This lets the "text" variable be passed into the next activity so that it can be displayed
         intent.putExtra("text", text);
+        //This starts the new activity
+        startActivity(intent);
+    }
+    public void openActivity3(){
+        //This creates a new intent so when a button is clicked, the user can go to the next activity, MainActivity3
+        Intent intent = new Intent(this, MainActivity3.class);
+        //This lets the "text" variable be passed into the next activity so that it can be displayed
+        intent.putExtra("text", textForRan);
         //This starts the new activity
         startActivity(intent);
     }
