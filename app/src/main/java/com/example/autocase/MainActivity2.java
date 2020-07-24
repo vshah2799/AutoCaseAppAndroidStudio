@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
@@ -26,10 +27,14 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         the intent.getStringExtra() gets the "text" key's data,
         which is the text that was passed from MainActivity*/
         text3.setText(intent.getStringExtra("text"));
+
+        Button buttonGoBackActivity2 = findViewById(R.id.buttonBackFromActivity2);
+        buttonGoBackActivity2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

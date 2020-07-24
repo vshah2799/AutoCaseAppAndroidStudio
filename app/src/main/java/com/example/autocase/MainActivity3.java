@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,11 +29,14 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         the intent.getStringExtra() gets the "text" key's data,
         which is the text that was passed from MainActivity*/
         text4.setText(randomCase(intent.getStringExtra("text")));
+        Button buttonGoBackActivity3 = findViewById(R.id.buttonBackFromActivity3);
+        buttonGoBackActivity3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     //This method is used for making the alternating case text
