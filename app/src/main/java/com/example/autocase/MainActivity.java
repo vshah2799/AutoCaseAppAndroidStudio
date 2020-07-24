@@ -2,11 +2,17 @@
 //These are all the packages and dependencies for this class
 package com.example.autocase;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.File;
+
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -16,10 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String textForRan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         //Standard Android code when creating an app
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         /*These variables get the ids of the buttons for MainActivity.xml and then puts listeners on them to see when they're clicked
         When the listener sees if its button is clicked, the onCLick method is run*/
@@ -27,10 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button2 = findViewById(R.id.button2);
         Button button3 = findViewById(R.id.button3);
         Button button4 = findViewById(R.id.button4);
+        Button buttonHistory = findViewById(R.id.buttonHistory);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+        buttonHistory.setOnClickListener(this);
 
     }
 
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //This extracts the text from textString and puts it in a temporary variable. This String will be manipulated in the if statements
         String tempText = textString.getText().toString();
-        //This variable is for the random casing. It will only be used in the else
+        //This variable is only for the random casing
         textForRan = textString.getText().toString();
 
         if(view.getId() == R.id.button1) {
@@ -96,10 +104,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             text = tempString.toString();
 
         }
-        else {
+        else if(view.getId() == R.id.button4){
             /*This calls the method openActivity3 because the text will be
             manipulated in the next activity*/
             openActivity3();
+            //This is so that the openActivity2 is not reached
+            return;
+        }
+        else{
+            //This calls the method openActivityHistory
+            openActivityHistory();
             //This is so that the openActivity2 is not reached
             return;
         }
@@ -121,6 +135,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, MainActivity3.class);
         //This lets the "text" variable be passed into the next activity so that it can be displayed
         intent.putExtra("text", textForRan);
+        //This starts the new activity
+        startActivity(intent);
+    }
+
+    public void openActivityHistory(){
+        //This creates a new intent so when a button is clicked, the user can go to the next activity, MainActivity4
+        Intent intent = new Intent(this, MainActivity4.class);
         //This starts the new activity
         startActivity(intent);
     }
