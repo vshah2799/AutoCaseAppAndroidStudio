@@ -1,4 +1,4 @@
-//This is a legacy class. It is not used anymore but kept for reference.
+/*This is a legacy class. It is not used anymore but kept for reference.
 //This was the activity for doing the random casing
 
 
@@ -36,7 +36,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
 
         /*This sets the TextView to the final text and
         the intent.getStringExtra() gets the "text" key's data,
-        which is the text that was passed from MainActivity*/
+        which is the text that was passed from MainActivity
         text4.setText(randomCase(intent.getStringExtra("text")));
 
         writeHistory(intent.getStringExtra("text"));
@@ -65,7 +65,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         into each index of the ArrayList AND makes every
         letter lowercase because if there are any letters
         uppercase in the String, it will mess up the
-        alternating upper/lower casing*/
+        alternating upper/lower casing
         for(int i = 0; i<tempText.length();i++){
             letList.add(tempText.substring(i, i+1).toLowerCase());
         }
@@ -73,7 +73,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
          /*This for loop makes random letters uppercase by using
          tempRan.nextInt(3) as the random number generator and it
          does not matter if there are any special characters
-         (ex: *$%^,\') because the toUpperCase methods handles it*/
+         (ex: *$%^,\') because the toUpperCase methods handles it
         for(int i = 0; i<letList.size(); i += tempRan.nextInt(3)){
             letList.set(i, letList.get(i).toUpperCase());
         }
@@ -81,7 +81,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         /*The ArrayList has the be rebuilt into a String
         so the first thing that has to happen is this for each loop.
         A StringBuilder object (tempString) is created and then the
-        for each puts every index of the ArrayList into the StringBuilder*/
+        for each puts every index of the ArrayList into the StringBuilder
 
         StringBuilder tempString = new StringBuilder();
         for(String x : letList){
@@ -107,3 +107,4 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
 
 }
 
+*/
