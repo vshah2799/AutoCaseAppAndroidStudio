@@ -8,17 +8,16 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="372dp"
-        android:layout_height="286dp"
+        android:layout_width="380dp"
+        android:layout_height="353dp"
         android:clickable="true"
         android:text="Activity 2"
         android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.249" />
+        app:layout_constraintVertical_bias="0.311" />
 
     <TextView
         android:id="@+id/textView3"
@@ -39,7 +38,7 @@
         android:id="@+id/buttonBackFromActivity2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="120dp"
         android:text="Do Another"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
