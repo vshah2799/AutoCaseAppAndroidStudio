@@ -1,3 +1,7 @@
+//This is a legacy class. It is not used anymore but kept for reference.
+//This was the activity for doing the random casing
+
+
 //Vishal Shah
 //These are all the packages and dependencies for this class
 package com.example.autocase;
@@ -102,3 +106,4 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
     }
 
 }
+

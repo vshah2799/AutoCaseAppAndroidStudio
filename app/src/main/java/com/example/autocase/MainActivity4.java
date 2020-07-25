@@ -17,29 +17,39 @@ import java.nio.charset.StandardCharsets;
 
 public class MainActivity4 extends AppCompatActivity implements View.OnClickListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
+        //This TextView object is for the one that shows the contents of the history file
         TextView view1 = findViewById(R.id.textViewHistory);
 
+        //Button object for the delete button
         Button buttonDelete = findViewById(R.id.buttonDeleteHistory);
 
+        //Button delete listener
         buttonDelete.setOnClickListener(this);
 
+        /*The try catch is needed here because their could be a FileNotFoundException
+        the setText method is called on view1 and the readHistory method is passed into setText
+        as the text that will be displayed*/
         try {
             view1.setText(readHistory());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-
     }
+
 
     @Override
     public void onClick(View view) {
-        deleteHistory();
+        //This is for if the delete button is pressed. The deleteHistory method is called
+        if(view.getId() == R.id.buttonDeleteHistory ){
+            deleteHistory();
+        }
     }
 
     public void deleteHistory(){
@@ -51,14 +61,19 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
             }
         }
         else{
+            //For some reason, this toast is never shown. Need to figure out why
             Toast.makeText(this, "No Text To Delete", Toast.LENGTH_LONG).show();
         }
+
+        TextView tempTextView = findViewById(R.id.textViewHistory);
+        tempTextView.setText(" ");
     }
 
     public String readHistory() throws FileNotFoundException {
         FileInputStream fis = this.openFileInput("history.txt");
         InputStreamReader inputStreamReader = new InputStreamReader(fis, StandardCharsets.UTF_8);
         StringBuilder stringBuilder = new StringBuilder();
+        String contents;
         try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
             String line = reader.readLine();
             while (line != null) {
@@ -68,12 +83,9 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
         } catch (IOException e) {
             // Error occurred when opening raw file for reading.
         } finally {
-            String contents = stringBuilder.toString();
+            contents = stringBuilder.toString();
         }
-
-        return stringBuilder.toString();
-
+        return contents;
     }
-
 
 }

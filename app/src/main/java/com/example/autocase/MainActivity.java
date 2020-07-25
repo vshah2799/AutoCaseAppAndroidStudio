@@ -14,12 +14,14 @@ import java.io.File;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     //This variable, "text", is the text that the user inputs into the text box in this activity
     private String text;
     private String textForRan;
+    private boolean ranFlag =  false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Standard Android code when creating an app
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         buttonHistory.setOnClickListener(this);
-
     }
 
     @Override
@@ -50,8 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //This extracts the text from textString and puts it in a temporary variable. This String will be manipulated in the if statements
         String tempText = textString.getText().toString();
-        //This variable is only for the random casing
-        textForRan = textString.getText().toString();
+
 
         if(view.getId() == R.id.button1) {
             /*This makes tempText all uppercase and then text gets set to it
@@ -67,74 +67,84 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             text = tempText.toLowerCase();
         }
 
-        else if(view.getId() == R.id.button3) {
-            //An ArrayList is created
-            ArrayList<String> letList = new ArrayList<>();
-
-            /*This for loop puts each letter of the String
-            into each index of the ArrayList AND makes every
-            letter lowercase because if there are any letters
-            uppercase in the String, it will mess up the
-            alternating upper/lower casing*/
-            for(int i = 0; i<tempText.length();i++){
-                letList.add(tempText.substring(i, i+1).toLowerCase());
-            }
-
-            /*This for loop makes every other letter uppercase
-            and it does not matter if there are any special
-            characters (ex: *$%^,\') because the toUpperCase
-            methods handles it*/
-            for(int i = 0; i<letList.size(); i = i+2){
-                letList.set(i, letList.get(i).toUpperCase());
-            }
-
-            /*The ArrayList has the be rebuilt into a String
-            so the first thing that has to happen is this for each loop.
-            A StringBuilder object (tempString) is created and then the
-            for each puts every index of the ArrayList into the StringBuilder*/
-            StringBuilder tempString = new StringBuilder();
-            for(String x : letList){
-                tempString.append(x);
-            }
-
-            /*text is set to tempString.totoString() because the toString()
-            method extracts the pure String from the StringBuilder.
-            The toString() method is needed because you cannot directly
-            convert a StringBuilder object to a */
-            text = tempString.toString();
-
+        else if((view.getId() == R.id.button3)) {
+            //This calls altAndRanMethod if the Alternate button is clicked
+            altAndRanMethod(tempText);
         }
+
         else if(view.getId() == R.id.button4){
-            /*This calls the method openActivity3 because the text will be
-            manipulated in the next activity*/
-            openActivity3();
-            //This is so that the openActivity2 is not reached
-            return;
+            //The ranFlag is set to true because the user selected the random button and then altAndRanMethod is called
+            ranFlag = true;
+            altAndRanMethod(tempText);
         }
         else{
-            //This calls the method openActivityHistory
+            //This calls the method openActivityHistory because the user must have selected the HISTORY button
             openActivityHistory();
             //This is so that the openActivity2 is not reached
             return;
         }
 
-        openActivity2();
+        //When all the if statements are done the openActivity2 methods is called to open MainActivity2
+        openActivity2(view);
     }
 
-    public void openActivity2(){
+    public void altAndRanMethod(String tempText){
+        //An ArrayList is created
+        ArrayList<String> letList = new ArrayList<>();
+
+        /*This for loop puts each letter of the String
+        into each index of the ArrayList AND makes every
+        letter lowercase because if there are any letters
+        uppercase in the String, it will mess up the
+        alternating upper/lower casing*/
+        for(int i = 0; i<tempText.length();i++){
+            letList.add(tempText.substring(i, i+1).toLowerCase());
+        }
+
+        if(!ranFlag){
+         /*This for loop makes every other letter uppercase
+        and it does not matter if there are any special
+        characters (ex: *$%^,\') because the toUpperCase
+        methods handles it*/
+            for(int i = 0; i<letList.size(); i = i+2){
+                letList.set(i, letList.get(i).toUpperCase());
+            }
+        }
+        else{
+            Random tempRan = new Random();
+            /*This for loop makes random letters uppercase by using
+             tempRan.nextInt(3) as the random number generator and it
+             does not matter if there are any special characters
+             (ex: *$%^,\') because the toUpperCase methods handles it*/
+            for(int i = 0; i<letList.size(); i += tempRan.nextInt(3)){
+                letList.set(i, letList.get(i).toUpperCase());
+            }
+        }
+
+        /*The ArrayList has the be rebuilt into a String
+        so the first thing that has to happen is this for each loop.
+        A StringBuilder object (tempString) is created and then the
+        for each puts every index of the ArrayList into the StringBuilder*/
+        StringBuilder tempString = new StringBuilder();
+        for(String x : letList){
+            tempString.append(x);
+        }
+
+        /*text is set to tempString.totoString() because the toString()
+        method extracts the pure String from the StringBuilder.
+        The toString() method is needed because you cannot directly
+        convert a StringBuilder object to a */
+        text = tempString.toString();
+    }
+
+
+
+    public void openActivity2(View view){
         //This creates a new intent so when a button is clicked, the user can go to the next activity, MainActivity2
         Intent intent = new Intent(this, MainActivity2.class);
         //This lets the "text" variable be passed into the next activity so that it can be displayed
         intent.putExtra("text", text);
-        //This starts the new activity
-        startActivity(intent);
-    }
 
-    public void openActivity3(){
-        //This creates a new intent so when a button is clicked, the user can go to the next activity, MainActivity3
-        Intent intent = new Intent(this, MainActivity3.class);
-        //This lets the "text" variable be passed into the next activity so that it can be displayed
-        intent.putExtra("text", textForRan);
         //This starts the new activity
         startActivity(intent);
     }

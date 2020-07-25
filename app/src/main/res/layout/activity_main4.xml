@@ -12,7 +12,6 @@
         android:layout_height="338dp"
         android:layout_marginTop="88dp"
         android:clickable="true"
-        android:text="TextView"
         android:textIsSelectable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

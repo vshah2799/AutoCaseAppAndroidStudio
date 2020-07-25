@@ -34,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         which is the text that was passed from MainActivity*/
         text3.setText(intent.getStringExtra("text"));
 
-
+        //This called the writeHistory methods so that the text can be added to the history.txt file
         writeHistory(intent.getStringExtra("text"));
 
         //This is for going back to MainActivity
@@ -50,16 +50,28 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     }
 
     public void writeHistory(String fileContents) {
+        //This is for writing to the history.txt file
+
+        //File Name
         String filename = "history.txt";
+
+        //This adds to extra, empty lines to the text
         String fileContents2 = fileContents + "\n\n";
-        try (FileOutputStream fos = this.openFileOutput(filename, Context.MODE_PRIVATE)) {
+
+        /*This is the code for writing to the file. The "Context.MODE_APPEND"
+        is used to append to the file rather than overwrite it*/
+        try (FileOutputStream fos = this.openFileOutput(filename, Context.MODE_APPEND)) {
             fos.write(fileContents2.getBytes());
+
+            //This Toast is for the user to make sure the text got saved
             Toast.makeText(this, "Saved",
                     Toast.LENGTH_LONG).show();
         }
         catch(IOException e){
             //Error, file not found
+            Toast.makeText(this, "ERROR. TEXT NOT SAVED ", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
+
     }
 }
