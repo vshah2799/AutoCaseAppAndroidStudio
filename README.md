@@ -1,8 +1,8 @@
 ****************************************************************************************
-THIS REPOSITORY HAS BEEN DECOMMISSIONED. THE PACKAGE NAMES FOR THE ORIGINAL
-APP WERE NOT ALLOWED BY GOOGLE, SO A NEW REPOSITORY AND LOCAL PROJECT HAD TO BE CREATED.
-ALL COMMITS ARE STILL VALID SO I AM KEEPING THIS UP TO SHOW MY PROGRESS. 
-GO TO https://github.com/vshah2799/AutoCase2 FOR THE NEW, OFFICIAL REPOSITORY.
+#### THIS REPOSITORY HAS BEEN DECOMMISSIONED. THE PACKAGE NAMES FOR THE ORIGINAL
+#### APP WERE NOT ALLOWED BY GOOGLE, SO A NEW REPOSITORY AND LOCAL PROJECT HAD TO BE CREATED.
+#### ALL COMMITS ARE STILL VALID SO I AM KEEPING THIS UP TO SHOW MY PROGRESS. 
+#### GO TO https://github.com/vshah2799/AutoCase2 FOR THE NEW, OFFICIAL REPOSITORY.
 ****************************************************************************************                                                                           
 
 
